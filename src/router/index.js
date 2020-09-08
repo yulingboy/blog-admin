@@ -15,6 +15,7 @@ import Comment from '../components/Comment.vue'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'hash',
   routes: [{
     path: '/',
     redirect: '/login'
