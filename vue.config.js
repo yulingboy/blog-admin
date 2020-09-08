@@ -4,8 +4,8 @@ module.exports = {
   runtimeCompiler: true,
   devServer: {
     disableHostCheck: true,
-    host: '112.124.203.100',
-    port: '3000'
+    host: '112.124.203.100'
+    // port: '3000'
   },
   configureWebpack: {
     resolve: {
