@@ -3,7 +3,10 @@ module.exports = {
   //zhengkai.blog.csdn.net
   runtimeCompiler: true,
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
     // host: '112.124.203.100'
     // port: '3000'
   },
