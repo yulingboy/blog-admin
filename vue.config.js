@@ -3,8 +3,8 @@ module.exports = {
   //zhengkai.blog.csdn.net
   runtimeCompiler: true,
   devServer: {
-    disableHostCheck: true,
-    host: '112.124.203.100'
+    disableHostCheck: true
+    // host: '112.124.203.100'
     // port: '3000'
   },
   configureWebpack: {
