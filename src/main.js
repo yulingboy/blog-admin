@@ -152,7 +152,7 @@ Vue.filter('time', function (value, formatString) {
 })
 
 Vue.prototype.$http = axios
-axios.defaults.baseURL = 'http://127.0.0.1:3000/admin/api/'
+axios.defaults.baseURL = 'http://112.124.203.100:3000/admin/api/'
 axios.defaults.headers.common.token = window.sessionStorage.getItem('token')
 axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
