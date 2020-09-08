@@ -1,0 +1,20 @@
+/* 全局样式 */
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.router-link-active {
+  text-decoration: none;
+  color: #fff;
+}
+.el-breadcrumb {
+  margin-bottom: 15px;
+}
+.el-pagination {
+  margin-top: 15px;
+}
