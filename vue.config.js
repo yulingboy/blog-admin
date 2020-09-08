@@ -7,6 +7,18 @@ module.exports = {
     // host: '112.124.203.100'
     // port: '3000'
   },
+  dev: {
+    // proxyTable: proxyConfig.proxyList, // 无效，不使用，20190422
+    proxyTable: {
+      '/api': {
+          target: 'http://112.124.203.100:3000',//后端接口地址
+          changeOrigin: true, // 是否允许跨越
+          pathRewrite: {
+              '^/api': '/api', // 重写
+          }
+      }
+    }
+  },
   configureWebpack: {
     resolve: {
       alias: {
