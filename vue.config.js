@@ -6,8 +6,8 @@ module.exports = {
     disableHostCheck: true,
     headers: {
       'Access-Control-Allow-Origin': '*'
-    },
-    host: '127.0.0.1'
+    }
+    // host: '112.124.203.100'
     // port: '3000'
   },
   configureWebpack: {
