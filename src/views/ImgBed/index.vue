@@ -1,5 +1,12 @@
 <template>
   <div>
+    <el-card class="box-card">
+      <el-form :inline="true" class="demo-form-inline">
+        <el-form-item>
+          <el-button type="primary" @click="addImg">新增</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
     <Table
       :data="data"
       :tableColumns="tableLabel"
@@ -11,15 +18,21 @@
       @pageChange="pageChange"
       @clickButton="clickButton"
     ></Table>
+    <!-- 上传图片 -->
+    <el-dialog title="上传图片" :visible.sync="upImgDialogVisible" width="50%">
+      <up-img @getImg="getImg"></up-img>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import api from '@/api/image.js';
 import Table from '@/components/Table';
+import UpImg from '@/components/UpImg';
 export default {
   components: {
-    Table
+    Table,
+    UpImg
   },
   data() {
     return {
@@ -28,8 +41,10 @@ export default {
         pageNum: 1,
         pageSize: 10
       },
-      // 文章列表
+      // 图片列表
       data: [],
+      // 新增图片弹窗是否显示
+      upImgDialogVisible: false,
       // 页码信息
       pageData: [],
       // 表头数据
@@ -81,10 +96,10 @@ export default {
         if (res.meta.status === 200) {
           this.data = res.data.images;
           this.pageData = res.data.pagition;
-          this.$message({
-            message: '获取分类列表成功！',
-            type: 'warning'
-          });
+          // this.$message({
+          //   message: '获取分类列表成功！',
+          //   type: 'warning'
+          // });
         } else {
           this.$message({
             message: '获取分类列表失败！',
@@ -92,6 +107,15 @@ export default {
           });
         }
       });
+    },
+    // 新增图片
+    addImg() {
+      this.upImgDialogVisible = true;
+    },
+    getImg(data) {
+      console.log(data);
+      this.getImagesList();
+      this.upImgDialogVisible = false;
     },
     // 每页显示多少条数据
     sizeChange(val) {
@@ -117,11 +141,8 @@ export default {
         await api.getImage(val.row._id).then(res => {
           console.log(res);
           if (res.meta.status === 200) {
-            // this.userForm = res.data;
-            // this.$router.push('/articles/edit/' + val.row._id);
           }
         });
-        // console.log(this.userForm);
       }
       // 删除
       if (val.methods === 'del') {
@@ -150,4 +171,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.box-card {
+  padding-bottom: 10px;
+}
+</style>
