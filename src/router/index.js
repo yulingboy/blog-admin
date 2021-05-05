@@ -63,34 +63,55 @@ const routes = [
         ]
       },
       {
+        path: '/comments',
+        name: 'comments',
+        meta: { title: '评论管理', icon: 'el-icon-chat-dot-round' },
+        component: () => import('@/views/Comments')
+      },
+      {
         path: '/classify',
         name: 'classifyList',
         meta: { title: '分类管理', icon: 'el-icon-menu' },
         component: () => import('@/views/Classify')
       },
       {
-        path: '/swiper',
-        name: 'SwiperList',
-        meta: { title: '通知管理', icon: 'el-icon-picture' },
-        component: () => import('@/views/Swiper')
+        path: '/notice',
+        name: 'notice',
+        meta: { title: '通知管理', icon: 'el-icon-message-solid' },
+        component: () => import('@/views/Notice'),
+        redirect: '/notice/swiper',
+        children: [
+          {
+            path: 'swiper',
+            name: 'SwiperList',
+            meta: { title: '轮播图管理', icon: 'el-icon-picture' },
+            component: () => import('@/views/Notice/components/Swiper/index.vue')
+          },
+          {
+            path: 'friend',
+            name: 'FriendList',
+            meta: { title: '友链管理', icon: 'el-icon-s-promotion' },
+            component: () => import('@/views/Notice/components/Friend/index.vue')
+          },
+          {
+            path: 'images',
+            name: 'imagesList',
+            meta: { title: '图片管理', icon: 'el-icon-picture' },
+            component: () => import('@/views/Notice/components/ImgBed/index.vue')
+          },
+          {
+            path: 'centences',
+            name: 'centenceList',
+            meta: { title: '佳句管理', icon: 'el-icon-s-comment' },
+            component: () => import('@/views/Notice/components/Sentence/index.vue')
+          }
+        ]
       },
       {
-        path: '/friend',
-        name: 'FriendList',
-        meta: { title: '友链管理', icon: 'el-icon-s-promotion' },
-        component: () => import('@/views/Friend')
-      },
-      {
-        path: '/images',
-        name: 'imagesList',
-        meta: { title: '图片管理', icon: 'el-icon-picture' },
-        component: () => import('@/views/ImgBed')
-      },
-      {
-        path: '/centences',
-        name: 'centenceList',
-        meta: { title: '佳句管理', icon: 'el-icon-s-comment' },
-        component: () => import('@/views/Sentence')
+        path: '/record',
+        name: 'record',
+        meta: { title: '日志管理', icon: 'el-icon-tickets' },
+        component: () => import('@/views/Record')
       },
       {
         path: '/system',
